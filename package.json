@@ -6,7 +6,6 @@
   "repository": "git@github.com:gabrieladeremi/icinema.git",
   "author": "Aderemi Amos <aderemi.amos@decagon.dev>",
   "license": "MIT",
-
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
@@ -15,7 +14,6 @@
     "data-import": "node backend/seeder",
     "data-destroy": "node backend/seeder -d"
   },
-
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
@@ -27,7 +25,10 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
-    "nodemon": "^2.0.7"
+    "jest": "^27.0.6",
+    "joi": "^17.4.0",
+    "mongodb-memory-server": "^6.9.6",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   }
-
 }
