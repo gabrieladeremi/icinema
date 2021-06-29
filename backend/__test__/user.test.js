@@ -1,6 +1,9 @@
-import request from "supertest";
-import app from "";
-import { testDbConnect, testDbDisconnect } from "../config/mongoDbMemoryServer";
+const request = require("supertest");
+const app = require("../server");
+const {
+  testDbConnect,
+  testDbDisconnect,
+} = require("../config/mongoDbMemoryServer");
 
 beforeAll(() => {
   testDbConnect();

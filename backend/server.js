@@ -1,15 +1,15 @@
 import express from 'express'
 import dotenv from 'dotenv'
-//import connectDB from './config/db.js'
+import connectDB from './config/db.js'
 import colors from 'colors'
 //import { notFound, errorHandler } from './middleware/errorMIddleware.js'
 dotenv.config()
 
 // import productRoutes from './routes/productRoutes.js'
-// import userRoutes from './routes/userRoutes.js'
+import userRoute from './routes/userRoute.js'
 // import orderRoutes from './routes/orderRoutes.js'
 
-//connectDB()
+connectDB()
 
 const app = express()
 
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 // app.use('/api/products', productRoutes)
-// app.use('/api/users', userRoutes)
+app.use('/api/users', userRoute)
 // app.use('/api/orders', orderRoutes)
 
 // app.use(notFound)
@@ -35,3 +35,4 @@ app.listen(
       .bold
   )
 )
+export default app;
