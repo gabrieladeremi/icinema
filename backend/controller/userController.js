@@ -9,7 +9,7 @@ import generateToken from "../util/generateToken.js";
 
 dotenv.config();
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
   const { error } = signInValidate(req.body);
   try {
@@ -81,4 +81,24 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { registerUser };
+
+const deleteUser = asyncHandler(async (req, res) =>
+{
+  try {
+    const userId = req.params.id
+
+    const deletedUser = await User.findByIdAndDelete(userId)
+
+    if (deletedUser) {
+      return res.status(201).send({message: 'User deleted successfully'})
+    } else {
+      return res.status(400).send('user not deleted')
+    }
+    
+  } catch (error) {
+    throw new Error(`error: ${error.message}`)
+    return
+  }
+})
+
+export { login, registerUser, deleteUser };
