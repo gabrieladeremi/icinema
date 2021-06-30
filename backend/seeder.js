@@ -2,7 +2,9 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
+import genres from './data/genres.js'
 import User from './model/userModel.js'
+import Genre from './model/genreModel.js'
 import connectDB from './config/db.js'
 
 dotenv.config()
@@ -12,8 +14,10 @@ connectDB()
 const importData = async () => {
   try {
     await User.deleteMany()
+    await Genre.deleteMany()
 
     const createdUsers = await User.insertMany(users)
+    const createdGenres = await Genre.insertMany(genres)
 
     const adminUser = createdUsers[0]._id
 
