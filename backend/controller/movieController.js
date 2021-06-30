@@ -4,12 +4,21 @@ import { createMovieValidate } from "../util/JoiValidation/movieValidation.js";
 import cloudinary from "../util/imageUploader/cloudinary.js";
 
 export const createMovie = async (req, res) => {
-  const { title, description, genre } = req.body;
-
-  const file = req.files;
-  if (file && file.length > 0) {
-    const result = await cloudinary.uploader.upload(file.path);
-    console.log(result);
+  const body = req.body;
+  const file = req.file;
+  console.log(file);
+  let result
+  if (file) {
+    console.log("i am here");
+    try {
+     result = await cloudinary.uploader.upload(file.path);
+      console.log(result);
+    } catch (error) {
+      return res.status(400).json({
+        status: "failed",
+        error: error.message,
+      });
+    }
   }
 
   try {
@@ -22,9 +31,9 @@ export const createMovie = async (req, res) => {
     }
 
     const newMovie = new Movie({
-      title,
-      description,
-      genre,
+      title: body.title,
+      description: body.description,
+      genre: body.genre,
       picture: result.url,
     });
 

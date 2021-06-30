@@ -5,16 +5,13 @@ const movieSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
       index: true,
     },
     description: {
       type: String,
-      required: true,
     },
     picture: {
         type:String,
-        required:true
     },
     genre: {
       type: mongoose.Schema.Types.ObjectId,

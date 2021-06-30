@@ -6,8 +6,9 @@ import colors from "colors";
 dotenv.config();
 
 // import productRoutes from './routes/productRoutes.js'
-import userRoute from "./routes/userRoute.js";
 import movieRoute from "./routes/movieRoute.js";
+import genreRoute from "./routes/genreRoute.js";
+import userRoute from "./routes/userRoute.js";
 // import orderRoutes from './routes/orderRoutes.js'
 
 connectDB();
@@ -23,6 +24,8 @@ app.get("/", (req, res) => {
 // app.use('/api/products', productRoutes)
 app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
+app.use("/api/genres", genreRoute);
+app.use("/api/users", userRoute);
 // app.use('/api/orders', orderRoutes)
 
 // app.use(notFound)
